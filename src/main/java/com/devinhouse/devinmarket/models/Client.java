@@ -16,13 +16,13 @@ public class Client {
     private String name;
     private String cpf;
     @Column(name = "data_nascimento")
-    private LocalDate birthDate;
+    private String birthDate;
 
     @ManyToMany
     @JoinTable(name = "produto_client", joinColumns = {@JoinColumn(name = "id_client")}, inverseJoinColumns = {@JoinColumn(name = "id_product")})
     Set<Product> product;
 
-    public Client(Long id, String name, String cpf, LocalDate birthDate, Set<Product> product) {
+    public Client(Long id, String name, String cpf, String birthDate, Set<Product> product) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
@@ -35,7 +35,7 @@ public class Client {
 
     //Construtor do DTO
 
-    public Client(String name, LocalDate birthDate, Set<Product> product) {
+    public Client(String name, String birthDate, Set<Product> product) {
         this.name = name;
         this.birthDate = birthDate;
         this.product = product;
@@ -65,11 +65,11 @@ public class Client {
         this.cpf = cpf;
     }
 
-    public LocalDate getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 

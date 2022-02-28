@@ -19,6 +19,11 @@ public class Category {
     public Category() {
     }
 
+    //Dto category
+    public Category(String name) {
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

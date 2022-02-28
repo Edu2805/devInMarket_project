@@ -2,19 +2,16 @@ package com.devinhouse.devinmarket.dto;
 
 import com.devinhouse.devinmarket.models.Client;
 import com.devinhouse.devinmarket.models.Product;
-
-import javax.persistence.Column;
 import java.time.LocalDate;
 import java.util.Set;
 
 public class DtoClient {
 
     private String name;
-    @Column(name = "data_nascimento")
-    private LocalDate birthDate;
+    private String birthDate;
     Set<Product> product;
 
-    public DtoClient(String name, LocalDate birthDate) {
+    public DtoClient(String name, String birthDate) {
         this.name = name;
         this.birthDate = birthDate;
     }
@@ -34,11 +31,19 @@ public class DtoClient {
         this.name = name;
     }
 
-    public LocalDate getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public Set<Product> getProduct() {
+        return product;
+    }
+
+    public void setProduct(Set<Product> product) {
+        this.product = product;
     }
 }
