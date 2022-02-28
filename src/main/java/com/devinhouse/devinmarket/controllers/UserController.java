@@ -19,10 +19,10 @@ public class UserController {
     }
 
     @GetMapping
-    public List<DtoProduct> findAll(){
+    public List<Product> findAll(){
 
         List<Product> products = productService.findAll();
-        return DtoProduct.convert(products);
+        return products;
     }
 
     @GetMapping(value = "/{id}")
@@ -31,10 +31,11 @@ public class UserController {
         return productService.findById(id);
     }
 
+    //Obs: Post está com a limitação do DTO
     @PostMapping
-    public Product salvar(@RequestBody Product product){
+    public Product salvar(@RequestBody DtoProduct productDto){
 
-        Product result = productService.add(product);
+        Product result = productService.add(productDto.transformToObject());
         return result;
     }
 
@@ -49,5 +50,4 @@ public class UserController {
 
         productService.delete(product);
     }
-
 }

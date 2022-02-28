@@ -25,7 +25,23 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    public Product(Long id, String name, String description, BigDecimal value, int inventory, Category category) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.value = value;
+        this.inventory = inventory;
+        this.category = category;
+    }
+
     public Product() {
+    }
+
+    //construtor para o DTO
+    public Product(String nome, String descricao, Category category) {
+        this.name = nome;
+        this.description = descricao;
+        this.category = category;
     }
 
     public Long getId() {
