@@ -9,12 +9,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/product")
-public class UserController {
+public class ProductController {
 
-    //video 38:49
     private ProductService productService;
 
-    public UserController(ProductService productService) {
+    public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
@@ -31,17 +30,18 @@ public class UserController {
         return productService.findById(id);
     }
 
-    //Obs: Post está com a limitação do DTO
     @PostMapping
-    public Product salvar(@RequestBody DtoProduct productDto){
+    public Product salvar(@RequestBody Product product){
 
-        Product result = productService.add(productDto.transformToObject());
+        Product result = productService.add(product);
         return result;
     }
 
-    @PutMapping
-    public Product update(@RequestBody Product product){
-        Product result = productService.update(product);
+    //Obs: Post está com a limitação do DTO
+    @PutMapping(name = "/{id}")
+    public Product update(@RequestBody DtoProduct productDto){
+
+        Product result = productService.add(productDto.transformToObject());
         return result;
     }
 
